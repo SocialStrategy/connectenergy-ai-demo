@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectEnergy AI Operations | Coreimpact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        ce: { amber: '#f59e0b', dark: '#050508', card: '#0f0f16', border: '#2a2a35' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050508; color: #e0e0e8; overflow-x: hidden; }
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+        }
+        .glow-effect {
+            box-shadow: 0 0 100px -20px rgba(245, 158, 11, 0.25);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #f59e0b, #ea580c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative selection:bg-ce-amber selection:text-black">
+    
+    <!-- Background Elements -->
+    <div class="absolute inset-0 bg-grid pointer-events-none z-0"></div>
+    <div class="absolute top-0 inset-x-0 h-96 bg-ce-amber/5 blur-[120px] pointer-events-none z-0"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 flex flex-col min-h-screen">
+        
+        <!-- Nav -->
+        <nav class="border-b border-ce-border/60 bg-ce-dark/80 backdrop-blur-md sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-2.5 h-2.5 rounded-full bg-ce-amber shadow-[0_0_12px_#f59e0b]"></div>
+                    <span class="font-semibold text-white tracking-tight text-lg">
+                        Coreimpact <span class="text-gray-500 font-normal">x ConnectEnergy</span>
+                    </span>
+                </div>
+                <div class="text-xs font-medium text-gray-400 border border-ce-border px-3 py-1.5 rounded-full tracking-wide uppercase bg-ce-card">
+                    Confidential Demo
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <main class="flex-grow max-w-7xl mx-auto px-6 pt-24 pb-20 text-center w-full">
+            
+            <div class="inline-block border border-ce-amber/20 bg-ce-amber/10 text-ce-amber px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-8 shadow-[0_0_20px_rgba(245,158,11,0.15)]">
+                Autonomous Pipeline V1
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 leading-tight">
+                Commercial Solar Sales, <br>
+                <span class="gradient-text">Fully Automated.</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-16 leading-relaxed font-light">
+                Watch the OpenClaw agent autonomously prospect industrial targets, extract satellite imagery, render photorealistic flush-mount arrays, and draft personalized Pipereply proposals.
+            </p>
+
+            <!-- Video Player Wrap -->
+            <div class="max-w-5xl mx-auto relative group mt-8">
+                <!-- Hover Glow -->
+                <div class="absolute -inset-1.5 bg-gradient-to-r from-ce-amber to-orange-600 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                
+                <!-- Main Container -->
+                <div class="relative bg-ce-card border border-ce-border rounded-xl p-2 md:p-3 glow-effect shadow-2xl overflow-hidden z-10">
+                    
+                    <!-- Decorative Browser Bar -->
+                    <div class="flex items-center gap-2 px-3 pb-3 pt-1 border-b border-ce-border mb-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                        <div class="mx-auto text-xs text-gray-500 font-mono tracking-widest">CONNECTENERGY-HUB-OS</div>
+                    </div>
+                    
+                    <!-- Video -->
+                    <video autoplay loop muted playsinline class="w-full rounded-lg border border-ce-border/40 bg-black shadow-inner">
+                        <source src="connectenergy-demo-final.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </main>
+
+        <!-- Features -->
+        <section class="max-w-7xl mx-auto px-6 py-24 w-full border-t border-ce-border/50 relative">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+                
+                <!-- Feature 1 -->
+                <div class="bg-ce-card/50 backdrop-blur-sm border border-ce-border p-8 rounded-2xl hover:border-ce-amber/50 hover:bg-ce-card transition-all duration-300 shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-ce-amber/20 to-orange-600/5 border border-ce-amber/20 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-ce-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3 tracking-tight">Targeted Prospecting</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-light">Agent scans industrial parks, evaluates usable roof sizes, and filters out existing solar installations using high-res satellite data.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-ce-card/50 backdrop-blur-sm border border-ce-border p-8 rounded-2xl hover:border-ce-amber/50 hover:bg-ce-card transition-all duration-300 shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-ce-amber/20 to-orange-600/5 border border-ce-amber/20 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-ce-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3 tracking-tight">Generative Rendering</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-light">Vision models dynamically overlay photorealistic flush-mount solar arrays tailored precisely to the prospect's roof geometry.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-ce-card/50 backdrop-blur-sm border border-ce-border p-8 rounded-2xl hover:border-ce-amber/50 hover:bg-ce-card transition-all duration-300 shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-ce-amber/20 to-orange-600/5 border border-ce-amber/20 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-ce-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3 tracking-tight">Automated Dispatch</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-light">System sizing, financial modeling, and PDF proposals are generated autonomously and queued into Pipereply as drafted emails.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-ce-border/40 py-8 text-center">
+            <p class="text-xs text-gray-500 font-mono tracking-widest uppercase">
+                Operated by Coreimpact OpenClaw Instance
+            </p>
+        </footer>
+
+    </div>
+</body>
+</html>
