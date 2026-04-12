@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Architecture Spec | ConnectEnergy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        ce: { amber: '#f59e0b', dark: '#050508', card: '#0f0f16', border: '#2a2a35' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050508; color: #e0e0e8; }
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 10%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 100%);
+        }
+        .step-number {
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative selection:bg-ce-amber selection:text-black">
+    
+    <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
+    <div class="fixed top-0 inset-x-0 h-96 bg-ce-amber/5 blur-[120px] pointer-events-none z-0"></div>
+
+    <div class="relative z-10 flex flex-col min-h-screen">
+        
+        <!-- Nav -->
+        <nav class="border-b border-ce-border/60 bg-ce-dark/80 backdrop-blur-md sticky top-0 z-50">
+            <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                    <div class="w-2.5 h-2.5 rounded-full bg-ce-amber shadow-[0_0_12px_#f59e0b]"></div>
+                    <span class="font-semibold text-white tracking-tight">Coreimpact <span class="text-gray-500 font-normal">x ConnectEnergy</span></span>
+                </a>
+                <div class="text-xs font-medium text-gray-400 border border-ce-border px-3 py-1.5 rounded-full uppercase bg-ce-card">
+                    Technical Spec
+                </div>
+            </div>
+        </nav>
+
+        <main class="flex-grow max-w-4xl mx-auto px-6 pt-16 pb-24 w-full">
+            
+            <header class="mb-16 border-b border-ce-border pb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">Autonomous Commercial Solar Pipeline</h1>
+                <p class="text-xl text-gray-400 font-light leading-relaxed">
+                    End-to-end technical architecture specification for the ConnectEnergy automated AI outbound sales engine.
+                </p>
+            </header>
+
+            <div class="space-y-12">
+                
+                <!-- Core Architecture -->
+                <section class="bg-ce-card border border-ce-border rounded-2xl p-8 shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10">
+                        <svg class="w-24 h-24 text-ce-amber" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white mb-6 relative z-10">0. Core Orchestration</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+                        <div>
+                            <h4 class="text-ce-amber font-semibold text-sm uppercase tracking-wider mb-2">Framework</h4>
+                            <p class="text-gray-400 text-sm">OpenClaw Agent Framework running autonomous background CRON jobs. Adheres to the n8n principle: discrete, isolated scripts passing state via a shared database to prevent LLM hallucination during multi-step tasks.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-ce-amber font-semibold text-sm uppercase tracking-wider mb-2">State & Data</h4>
+                            <p class="text-gray-400 text-sm">SQLite (WAL mode) for transactional pipeline tracking. Cloud object storage (AWS S3 or Cloudflare Blob) for satellite imagery, generated renders, and PDF artifacts.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Step 1 -->
+                <section class="border-l-2 border-ce-amber/30 pl-8 ml-4 relative">
+                    <div class="absolute -left-4 top-0 bg-ce-dark border-2 border-ce-amber w-8 h-8 rounded-full flex items-center justify-center font-bold text-ce-amber text-sm">1</div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Target Prospecting & Intelligence</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Identifying viable commercial targets and finding the correct decision-makers.</p>
+                    
+                    <div class="bg-ce-card/50 border border-ce-border rounded-xl p-5 mb-4">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="bg-ce-amber/10 text-ce-amber px-2 py-0.5 rounded text-xs font-mono mt-0.5">API</span>
+                                <div>
+                                    <strong class="text-gray-200 text-sm block mb-1">Google Places API / Cadastral Data</strong>
+                                    <span class="text-gray-400 text-sm">Scans specific industrial zones for logistics, manufacturing, and warehouse footprints. Extracts business names and addresses.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="bg-ce-amber/10 text-ce-amber px-2 py-0.5 rounded text-xs font-mono mt-0.5">API</span>
+                                <div>
+                                    <strong class="text-gray-200 text-sm block mb-1">Apollo.io / Hunter.io</strong>
+                                    <span class="text-gray-400 text-sm">Enriches the company data to find the specific "Facility Manager" or "VP of Operations" and verifies their email address.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Step 2 -->
+                <section class="border-l-2 border-ce-amber/30 pl-8 ml-4 relative">
+                    <div class="absolute -left-4 top-0 bg-ce-dark border-2 border-ce-amber w-8 h-8 rounded-full flex items-center justify-center font-bold text-ce-amber text-sm">2</div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Satellite Extraction & Roof Analysis</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Validating roof viability and determining usable square meterage.</p>
+                    
+                    <div class="bg-ce-card/50 border border-ce-border rounded-xl p-5 mb-4">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="bg-ce-amber/10 text-ce-amber px-2 py-0.5 rounded text-xs font-mono mt-0.5">DATA</span>
+                                <div>
+                                    <strong class="text-gray-200 text-sm block mb-1">Nearmap API / Google Maps Aerial</strong>
+                                    <span class="text-gray-400 text-sm">Pulls recent, high-resolution top-down and oblique satellite imagery of the specific property coordinates.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded text-xs font-mono mt-0.5">AI</span>
+                                <div>
+                                    <strong class="text-gray-200 text-sm block mb-1">Gemini 3.1 Pro Vision</strong>
+                                    <span class="text-gray-400 text-sm">Analyzes the image to detect existing solar (discards lead if present), identifies HVAC obstructions/skylights, and estimates the contiguous usable roof space.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Step 3 -->
+                <section class="border-l-2 border-ce-amber/30 pl-8 ml-4 relative">
+                    <div class="absolute -left-4 top-0 bg-ce-dark border-2 border-ce-amber w-8 h-8 rounded-full flex items-center justify-center font-bold text-ce-amber text-sm">3</div>
+                    <h3 class="text-xl font-semibold text-white mb-3">System Sizing & Financial Modeling</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Calculating the optimal solar array size, energy yield, and ROI.</p>
+                    
+                    <div class="bg-ce-card/50 border border-ce-border rounded-xl p-5 mb-4">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="bg-ce-amber/10 text-ce-amber px-2 py-0.5 rounded text-xs font-mono mt-0.5">API</span>
+                                <div>
+                                    <strong class="text-gray-200 text-sm block mb-1">NREL PVWatts / OpenSolar API</strong>
+                                    <span class="text-gray-400 text-sm">Takes the coordinates and usable roof area to calculate optimal kW capacity and estimated annual kWh yield.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="bg-green-500/10 text-green-400 px-2 py-0.5 rounded text-xs font-mono mt-0.5">CODE</span>
+                                <div>
+                                    <strong class="text-gray-200 text-sm block mb-1">Financial Logic Engine</strong>
+                                    <span class="text-gray-400 text-sm">Deterministic Python/Node script calculating STC rebates and payback periods based on localized commercial tariffs (e.g., Energex QLD rates).</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Step 4 -->
+                <section class="border-l-2 border-ce-amber/30 pl-8 ml-4 relative">
+                    <div class="absolute -left-4 top-0 bg-ce-dark border-2 border-ce-amber w-8 h-8 rounded-full flex items-center justify-center font-bold text-ce-amber text-sm">4</div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Generative Visual Rendering</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Creating the visual "hook" for the outbound email.</p>
+                    
+                    <div class="bg-ce-card/50 border border-ce-border rounded-xl p-5 mb-4">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded text-xs font-mono mt-0.5">AI</span>
+                                <div>
+                                    <strong class="text-gray-200 text-sm block mb-1">Stable Diffusion / Flux.1 (via Replicate API)</strong>
+                                    <span class="text-gray-400 text-sm">Uses an image-to-image pipeline with a custom LoRA and ControlNet masking. The mask ensures the photorealistic flush-mount solar panels only render on the empty roof space, matching the sun's exact lighting and shadow angles from the original satellite image.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Step 5 -->
+                <section class="border-l-2 border-transparent pl-8 ml-4 relative">
+                    <div class="absolute -left-4 top-0 bg-ce-dark border-2 border-ce-amber w-8 h-8 rounded-full flex items-center justify-center font-bold text-ce-amber text-sm">5</div>
+                    <h3 class="text-xl font-semibold text-white mb-3">Proposal Generation & Dispatch</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">Generating the final artifact and cueing it up for a human to review and send.</p>
+                    
+                    <div class="bg-ce-card/50 border border-ce-border rounded-xl p-5 mb-4">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <span class="bg-green-500/10 text-green-400 px-2 py-0.5 rounded text-xs font-mono mt-0.5">CODE</span>
+                                <div>
+                                    <strong class="text-gray-200 text-sm block mb-1">Playwright PDF Generator</strong>
+                                    <span class="text-gray-400 text-sm">Injects the calculations, ROI data, and the generative "After" image into a ConnectEnergy branded HTML template, printing it to a polished PDF.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="bg-ce-amber/10 text-ce-amber px-2 py-0.5 rounded text-xs font-mono mt-0.5">API</span>
+                                <div>
+                                    <strong class="text-gray-200 text-sm block mb-1">Pipereply CRM Integration</strong>
+                                    <span class="text-gray-400 text-sm">Hits the Pipereply webhook/API to create a new Lead. Attaches the PDF and drafts a hyper-personalized email containing the key metrics. The email sits in "Drafts" for Sam Watson to click approve/send, maintaining safety and quality control.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="index.html" class="inline-flex items-center gap-2 text-ce-amber hover:text-white transition-colors text-sm font-medium">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    Back to Video Demo
+                </a>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>
