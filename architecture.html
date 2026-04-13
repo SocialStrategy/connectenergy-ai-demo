@@ -58,9 +58,9 @@
         <main class="flex-grow max-w-4xl mx-auto px-6 pt-16 pb-24 w-full">
             
             <header class="mb-16 border-b border-ce-border pb-8">
-                <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">Autonomous Commercial Solar Pipeline</h1>
+                <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">Autonomous Residential Solar Pipeline</h1>
                 <p class="text-xl text-gray-400 font-light leading-relaxed">
-                    End-to-end technical architecture specification for the ConnectEnergy automated AI outbound sales engine.
+                    End-to-end technical architecture specification for the ConnectEnergy automated AI outbound sales engine targeting homeowners in Darra, QLD.
                 </p>
             </header>
 
@@ -95,15 +95,15 @@
                             <li class="flex items-start gap-3">
                                 <span class="bg-ce-amber/10 text-ce-amber px-2 py-0.5 rounded text-xs font-mono mt-0.5">API</span>
                                 <div>
-                                    <strong class="text-gray-200 text-sm block mb-1">Google Places API / Cadastral Data</strong>
-                                    <span class="text-gray-400 text-sm">Scans specific industrial zones for logistics, manufacturing, and warehouse footprints. Extracts business names and addresses.</span>
+                                    <strong class="text-gray-200 text-sm block mb-1">Google Places API / Property Data</strong>
+                                    <span class="text-gray-400 text-sm">Scans residential streets in Darra (4076) to identify unshaded single-family homes. Extracts addresses and cross-references with homeowner datasets.</span>
                                 </div>
                             </li>
                             <li class="flex items-start gap-3">
                                 <span class="bg-ce-amber/10 text-ce-amber px-2 py-0.5 rounded text-xs font-mono mt-0.5">API</span>
                                 <div>
-                                    <strong class="text-gray-200 text-sm block mb-1">Apollo.io / Hunter.io</strong>
-                                    <span class="text-gray-400 text-sm">Enriches the company data to find the specific "Facility Manager" or "VP of Operations" and verifies their email address.</span>
+                                    <strong class="text-gray-200 text-sm block mb-1">Data Enrichment API</strong>
+                                    <span class="text-gray-400 text-sm">Enriches the property data to find the current homeowner and append email/direct mail contact details.</span>
                                 </div>
                             </li>
                         </ul>
@@ -155,7 +155,7 @@
                                 <span class="bg-green-500/10 text-green-400 px-2 py-0.5 rounded text-xs font-mono mt-0.5">CODE</span>
                                 <div>
                                     <strong class="text-gray-200 text-sm block mb-1">Financial Logic Engine</strong>
-                                    <span class="text-gray-400 text-sm">Deterministic Python/Node script calculating STC rebates and payback periods based on localized commercial tariffs (e.g., Energex QLD rates).</span>
+                                    <span class="text-gray-400 text-sm">Deterministic Python/Node script calculating STC rebates and payback periods based on residential Energex tariffs and estimated Darra household consumption.</span>
                                 </div>
                             </li>
                         </ul>
